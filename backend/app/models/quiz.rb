@@ -1,2 +1,3 @@
 class Quiz < ApplicationRecord
+    
 end

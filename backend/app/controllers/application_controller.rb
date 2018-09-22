@@ -12,6 +12,10 @@ class ApplicationController < ActionController::API
         end
     end
 
+    def admin_user
+       current_user.admin
+    end
+
     protected
 
         def current_user
