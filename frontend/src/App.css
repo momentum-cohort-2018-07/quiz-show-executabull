@@ -1,0 +1,75 @@
+* {
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0;
+}
+
+body {
+  margin: 0 auto;
+  font-family: sans-serif;
+}
+
+header {
+  font-size: 2rem;
+  text-align: center;
+  padding: 20px;
+}
+
+.main {
+  border: 1px solid black;
+  display: inline-block;
+  height: 90vh;
+  width: 60%;
+}
+
+.login-form, .register-form {
+  max-width: 65%;
+  margin: 50px auto;
+  border: 1px black solid;
+  padding: 10px 40px 40px 40px;
+  border-radius: 20px;
+}
+
+.username, .password {
+  text-align: left;
+  padding: 0px 0px 0px 0px;
+}
+
+#login-title, #register-title {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.sidebar {
+  border: 2px solid blue;
+  display: inline-block;
+  width: 20%;
+  height: 90vh;
+  text-align: center;
+}
+
+.sidebar-container {
+  padding: 10px;
+}
+
+label {
+  margin: 10px 0px 0px 8px;
+}
+
+.register-info {
+  margin: 18px 0px;
+width: 75%;
+display: inline-block;
+}
+
+.login-button {
+  display: inline-block;
+  width: 20%;
+  Margin: 15px 0px 0px 0px;
+}
+
+.register-button {
+  margin: 15px 0px 0px 74%;
+}
+
+
