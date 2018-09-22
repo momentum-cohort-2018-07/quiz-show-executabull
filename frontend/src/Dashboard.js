@@ -1,9 +1,4 @@
 import React, { Component } from 'react'
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom'
 import 'bulma/css/bulma.css'
 
 class Dashboard extends Component {
@@ -17,10 +12,34 @@ class Dashboard extends Component {
   }
 
   render () {
+    const { currentUser } = this.props
     return (
-      <h1>Dashboard</h1>
+      <div>
+        <section className='sidebar'>
+          <div className='sidebar-container'>
+            <h3>Welcome, {currentUser.name}!</h3>
+            <a classname='past-scores'>Past Scores</a>
+            <button className='button logout-button'>Log Out</button>
+          </div>
+        </section>
+        <section className='main-container'>
+          <h1>Quizzes</h1>
+        
+        </section>
+      </div>
     )
   }
 }
 
 export default Dashboard
+
+// Dashboard
+// USER if published quiz
+// Get:
+//   Quiz names
+//   Taken?
+//     Score
+//   Quiz_id
+//   Number of questions
+// ADMIN
+//   Unpublished quiz info

@@ -15,15 +15,29 @@ header {
   padding: 20px;
 }
 
-.main {
+.sidebar {
+  border: 2px solid blue;
+  display: inline-block;
+  width: 20%;
+  height: 90vh;
+  text-align: center;
+  vertical-align: top;
+}
+
+.sidebar-container {
+  padding: 10px;
+}
+
+.main-container {
   border: 1px solid black;
   display: inline-block;
   height: 90vh;
-  width: 60%;
+  width: 80%;
+  vertical-align: top;
 }
 
 .login-form, .register-form {
-  max-width: 65%;
+  max-width: 50%;
   margin: 50px auto;
   border: 1px black solid;
   padding: 10px 40px 40px 40px;
@@ -40,22 +54,6 @@ header {
   font-size: 2rem;
 }
 
-.sidebar {
-  border: 2px solid blue;
-  display: inline-block;
-  width: 20%;
-  height: 90vh;
-  text-align: center;
-}
-
-.sidebar-container {
-  padding: 10px;
-}
-
-label {
-  margin: 10px 0px 0px 8px;
-}
-
 .register-info {
   margin: 18px 0px;
 width: 75%;
@@ -64,12 +62,12 @@ display: inline-block;
 
 .login-button {
   display: inline-block;
-  width: 20%;
-  Margin: 15px 0px 0px 0px;
+  /* width: 20%; */
+  margin: 15px 0px 0px 0px;
 }
 
 .register-button {
-  margin: 15px 0px 0px 74%;
+  margin: 15px 0px 0px 72%;
 }
 
 

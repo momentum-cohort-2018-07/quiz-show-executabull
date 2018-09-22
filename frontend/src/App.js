@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {
   BrowserRouter as Router,
   Route,
-  Link
+  Redirect
 } from 'react-router-dom'
 import 'bulma/css/bulma.css'
 import './App.css'
@@ -14,6 +14,7 @@ import EditQuiz from './EditQuiz'
 import PastScores from './PastScores'
 import LoginForm from './LoginForm.js'
 import RegistrationForm from './RegistrationForm'
+import data from './data'
 
 class App extends Component {
   constructor () {
@@ -26,7 +27,7 @@ class App extends Component {
     const token = window.localStorage.getItem('token')
     if (username && token) {
       this.state.currentUser = {username, token}
-      // data.setUserToken(token)
+      data.setUserToken(token)
     }
 
     this.setCurrentUser = this.setCurrentUser.bind(this)
@@ -40,7 +41,7 @@ class App extends Component {
   }
 
   logout () {
-    // data.setUserToken(null)
+    data.setUserToken(null)
     window.localStorage.clear()
     this.setState({
       currentUser: null
@@ -56,16 +57,10 @@ class App extends Component {
             <header className='App-header'>
               <h1 className='App-title'><strong>Quiz-a-Bull</strong></h1>
             </header>
-            <section className='sidebar'>
-              <div className='sidebar-container'>
-                <h3>Welcome, {currentUser.name}</h3>
-              </div>
-            </section>
-            <section className='main'>
-              <div className='main-container' />
-              <RegistrationForm currentuser={this.setCurrentUser} />
+            <div className='board'>
+              {/* <RegistrationForm currentuser={this.setCurrentUser} /> */}
               <LoginForm currentuser={this.setCurrentUser} />
-            </section>
+            </div>
           </div>
         </div>
       </Router>
