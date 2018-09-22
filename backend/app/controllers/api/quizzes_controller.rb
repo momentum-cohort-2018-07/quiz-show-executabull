@@ -9,6 +9,7 @@ class Api::QuizzesController < ApplicationController
         render json: @quizzes
       else
         render json: @quizzes.where(published:true)
+      end
     end
 
     def show
