@@ -91,6 +91,7 @@ FOREIGN KEY ("quiz_id")
   ↳ bin/rails:9
   [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ bin/rails:9
+
 Started GET "/rails/info/routes" for 127.0.0.1 at 2018-09-22 12:36:18 -0400
   [1m[35m (6.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ /Users/sohel/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
@@ -408,5 +409,3 @@ Processing by Api::LoginsController#create as */*
   [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "jona12"], ["LIMIT", 1]]
   ↳ app/controllers/api/logins_controller.rb:6
 Completed 200 OK in 95ms (Views: 0.3ms | ActiveRecord: 9.7ms)
-
-
