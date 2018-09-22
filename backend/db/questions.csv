@@ -1,4 +1,4 @@
-id,quiz_id,text
+id,quiz_id,q_text
 1,1,What method do you use to get all records that match a condition?
 2,1,What does `findIndex` return if no records match its condition?
 3,1,Which of the following does the method `map` do?

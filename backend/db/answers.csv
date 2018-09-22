@@ -1,0 +1,25 @@
+id,question_id,a_text,correct
+1,1,find,0
+2,1,findAll,0
+3,1,filter,1
+4,1,reduce,0
+5,2,-1,1
+6,2,false,0
+7,2,null,0
+8,3,create a new array of shorter length than the original,0
+9,3,create a new array of the same length as the original,1
+10,3,return a single value,0
+11,3,transform the original array,0
+12,4,`has_and_belongs_to_many :posts` in `Comment`,0
+13,4,"`belongs_to :post, through: :post_id` in `Comment`",0
+14,4,"`has_many :comments` in `Post`",1
+15,4,`belongs_to :comment` in `Post`,0
+16,5,numericality,1
+17,5,reliability,0
+18,5,email,0
+19,5,text,0
+20,5,size,0
+21,6,PostgreSQL,0
+22,6,SQLite,0
+23,6,MySQL,0
+24,6,MongoDB,1
