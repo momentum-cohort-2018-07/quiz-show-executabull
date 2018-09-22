@@ -12,11 +12,15 @@ class ApplicationController < ActionController::API
         end
     end
 
+    def admin_user
+       current_user.admin
+    end
+
     protected
 
         def current_user
             @current_user ||= authenticate_with_http_token do |token, options|
-                User.find_by_api_token(token)
+                User.find_by_token(token)
             end
         end
 

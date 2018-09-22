@@ -3,5 +3,6 @@ Rails.application.routes.draw do
     namespace :api do
       resources :users
       resource :logins, only: :create
+      resources :quizzes, only: [:index, :update, :create, :show, :destroy]
     end
 end
