@@ -23,6 +23,7 @@ class Api::QuestionsController < ApplicationController
         render json: @question.errors, status: :unprocessable_entity
       end
     end
+
     
     def update 
       @question = Question.find(params[:id])
