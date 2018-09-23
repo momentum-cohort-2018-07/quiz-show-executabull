@@ -3846,3 +3846,318 @@ ActionController::ParameterMissing (param is missing or the value is empty: ques
   
 app/controllers/api/questions_controller.rb:48:in `question_params'
 app/controllers/api/questions_controller.rb:19:in `create'
+Started POST "/api/quizzes/2/questions" for 127.0.0.1 at 2018-09-23 15:59:32 -0400
+Processing by Api::QuestionsController#create as */*
+  Parameters: {"quiz_id"=>"2"}
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "yQwow2LhpKG5VtLvKU8wvLD2"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:23
+  [1m[36mQuiz Load (0.7ms)[0m  [1m[34mSELECT  "quizzes".* FROM "quizzes" WHERE "quizzes"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/questions_controller.rb:18
+Completed 400 Bad Request in 6ms (ActiveRecord: 3.1ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: question):
+  
+app/controllers/api/questions_controller.rb:48:in `question_params'
+app/controllers/api/questions_controller.rb:19:in `create'
+Started POST "/api/quizzes/2/questions" for 127.0.0.1 at 2018-09-23 15:59:45 -0400
+Processing by Api::QuestionsController#create as */*
+  Parameters: {"quiz_id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "yQwow2LhpKG5VtLvKU8wvLD2"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:23
+  [1m[36mQuiz Load (0.4ms)[0m  [1m[34mSELECT  "quizzes".* FROM "quizzes" WHERE "quizzes"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/questions_controller.rb:18
+Completed 400 Bad Request in 3ms (ActiveRecord: 0.8ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: question):
+  
+app/controllers/api/questions_controller.rb:48:in `question_params'
+app/controllers/api/questions_controller.rb:19:in `create'
+Started GET "/api/quizzes/2/questions" for 127.0.0.1 at 2018-09-23 16:00:05 -0400
+Processing by Api::QuestionsController#index as */*
+  Parameters: {"quiz_id"=>"2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "yQwow2LhpKG5VtLvKU8wvLD2"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:23
+  [1m[36mQuiz Load (0.4ms)[0m  [1m[34mSELECT  "quizzes".* FROM "quizzes" WHERE "quizzes"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/questions_controller.rb:7
+  [1m[36mQuestion Load (0.7ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."quiz_id" = $1[0m  [["quiz_id", 2]]
+  ↳ app/controllers/api/questions_controller.rb:9
+Completed 200 OK in 6ms (Views: 1.7ms | ActiveRecord: 1.7ms)
+
+
+Started POST "/api/quizzes/2/questions" for 127.0.0.1 at 2018-09-23 16:01:19 -0400
+Processing by Api::QuestionsController#create as */*
+  Parameters: {"quiz_id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "yQwow2LhpKG5VtLvKU8wvLD2"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:23
+  [1m[36mQuiz Load (0.2ms)[0m  [1m[34mSELECT  "quizzes".* FROM "quizzes" WHERE "quizzes"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/questions_controller.rb:18
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/questions_controller.rb:19
+  [1m[36mQuestion Create (26.8ms)[0m  [1m[32mINSERT INTO "questions" ("quiz_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["quiz_id", 2], ["created_at", "2018-09-23 20:01:19.430221"], ["updated_at", "2018-09-23 20:01:19.430221"]]
+  ↳ app/controllers/api/questions_controller.rb:19
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/questions_controller.rb:19
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/questions_controller.rb:20
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/questions_controller.rb:20
+Completed 200 OK in 69ms (Views: 0.3ms | ActiveRecord: 39.3ms)
+
+
+Started POST "/api/quizzes/2/questions" for 127.0.0.1 at 2018-09-23 16:01:43 -0400
+Processing by Api::QuestionsController#create as */*
+  Parameters: {"quiz_id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "yQwow2LhpKG5VtLvKU8wvLD2"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:23
+  [1m[36mQuiz Load (0.2ms)[0m  [1m[34mSELECT  "quizzes".* FROM "quizzes" WHERE "quizzes"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/questions_controller.rb:18
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/questions_controller.rb:19
+  [1m[36mQuestion Create (0.6ms)[0m  [1m[32mINSERT INTO "questions" ("quiz_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["quiz_id", 2], ["created_at", "2018-09-23 20:01:43.635500"], ["updated_at", "2018-09-23 20:01:43.635500"]]
+  ↳ app/controllers/api/questions_controller.rb:19
+  [1m[35m (5.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/questions_controller.rb:19
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/questions_controller.rb:20
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/questions_controller.rb:20
+Completed 200 OK in 13ms (Views: 0.5ms | ActiveRecord: 7.5ms)
+
+
+Started POST "/api/quizzes/2/questions" for 127.0.0.1 at 2018-09-23 16:02:20 -0400
+Processing by Api::QuestionsController#create as */*
+  Parameters: {"quiz_id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "yQwow2LhpKG5VtLvKU8wvLD2"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:23
+  [1m[36mQuiz Load (0.3ms)[0m  [1m[34mSELECT  "quizzes".* FROM "quizzes" WHERE "quizzes"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/questions_controller.rb:18
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/questions_controller.rb:19
+  [1m[36mQuestion Create (0.5ms)[0m  [1m[32mINSERT INTO "questions" ("quiz_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["quiz_id", 2], ["created_at", "2018-09-23 20:02:20.045630"], ["updated_at", "2018-09-23 20:02:20.045630"]]
+  ↳ app/controllers/api/questions_controller.rb:19
+  [1m[35m (5.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/questions_controller.rb:19
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/questions_controller.rb:20
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/questions_controller.rb:20
+Completed 200 OK in 16ms (Views: 1.1ms | ActiveRecord: 7.7ms)
+
+
+Started POST "/api/quizzes/2/questions" for 127.0.0.1 at 2018-09-23 16:03:02 -0400
+Processing by Api::QuestionsController#create as */*
+  Parameters: {"id"=>4, "quiz_id"=>"2", "q_text"=>"Portsmithy", "question"=>{"id"=>4, "quiz_id"=>"2", "q_text"=>"Portsmithy"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "yQwow2LhpKG5VtLvKU8wvLD2"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:23
+  [1m[36mQuiz Load (0.2ms)[0m  [1m[34mSELECT  "quizzes".* FROM "quizzes" WHERE "quizzes"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/questions_controller.rb:18
+Unpermitted parameters: :id, :question
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/questions_controller.rb:19
+  [1m[36mQuestion Create (0.4ms)[0m  [1m[32mINSERT INTO "questions" ("quiz_id", "q_text", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["quiz_id", 2], ["q_text", "Portsmithy"], ["created_at", "2018-09-23 20:03:02.733565"], ["updated_at", "2018-09-23 20:03:02.733565"]]
+  ↳ app/controllers/api/questions_controller.rb:19
+  [1m[35m (5.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/questions_controller.rb:19
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/questions_controller.rb:20
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/questions_controller.rb:20
+Completed 200 OK in 14ms (Views: 0.5ms | ActiveRecord: 8.3ms)
+
+
+Started POST "/api/quizzes/2/questions" for 127.0.0.1 at 2018-09-23 16:04:09 -0400
+Processing by Api::QuestionsController#create as */*
+  Parameters: {"id"=>4, "quiz_id"=>"2", "q_text"=>"Portsmithy", "question"=>{"id"=>4, "quiz_id"=>"2", "q_text"=>"Portsmithy"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "yQwow2LhpKG5VtLvKU8wvLD2"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:23
+  [1m[36mQuiz Load (0.2ms)[0m  [1m[34mSELECT  "quizzes".* FROM "quizzes" WHERE "quizzes"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/questions_controller.rb:18
+Unpermitted parameter: :id
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/questions_controller.rb:19
+  [1m[36mQuestion Create (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("quiz_id", "q_text", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["quiz_id", 2], ["q_text", "Portsmithy"], ["created_at", "2018-09-23 20:04:09.564299"], ["updated_at", "2018-09-23 20:04:09.564299"]]
+  ↳ app/controllers/api/questions_controller.rb:19
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/questions_controller.rb:19
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/questions_controller.rb:20
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/questions_controller.rb:20
+Completed 200 OK in 31ms (Views: 0.3ms | ActiveRecord: 9.1ms)
+
+
+Started POST "/api/quizzes/2/questions/11" for 127.0.0.1 at 2018-09-23 16:07:29 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/api/quizzes/2/questions/11"):
+  
+actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started DELETE "/api/quizzes/2/questions/11" for 127.0.0.1 at 2018-09-23 16:07:40 -0400
+Processing by Api::QuestionsController#destroy as */*
+  Parameters: {"id"=>"11", "quiz_id"=>"2", "q_text"=>"Portsmithy", "question"=>{"id"=>"11", "quiz_id"=>"2", "q_text"=>"Portsmithy"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "yQwow2LhpKG5VtLvKU8wvLD2"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:23
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/api/questions_controller.rb:37
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/questions_controller.rb:38
+  [1m[36mAnswer Load (13.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 11]]
+  ↳ app/controllers/api/questions_controller.rb:38
+  [1m[36mQuestion Destroy (0.6ms)[0m  [1m[31mDELETE FROM "questions" WHERE "questions"."id" = $1[0m  [["id", 11]]
+  ↳ app/controllers/api/questions_controller.rb:38
+  [1m[35m (4.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/questions_controller.rb:38
+Completed 200 OK in 47ms (Views: 0.2ms | ActiveRecord: 22.2ms)
+
+
+Started DELETE "/api/quizzes/2/questions/10" for 127.0.0.1 at 2018-09-23 16:08:31 -0400
+Processing by Api::QuestionsController#destroy as */*
+  Parameters: {"quiz_id"=>"2", "id"=>"10", "question"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "yQwow2LhpKG5VtLvKU8wvLD2"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:23
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/api/questions_controller.rb:37
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/questions_controller.rb:38
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 10]]
+  ↳ app/controllers/api/questions_controller.rb:38
+  [1m[36mQuestion Destroy (0.4ms)[0m  [1m[31mDELETE FROM "questions" WHERE "questions"."id" = $1[0m  [["id", 10]]
+  ↳ app/controllers/api/questions_controller.rb:38
+  [1m[35m (6.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/questions_controller.rb:38
+Completed 200 OK in 12ms (Views: 0.3ms | ActiveRecord: 7.2ms)
+
+
+Started DELETE "/api/quizzes/2/questions/9" for 127.0.0.1 at 2018-09-23 16:08:37 -0400
+Processing by Api::QuestionsController#destroy as */*
+  Parameters: {"quiz_id"=>"2", "id"=>"9", "question"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "yQwow2LhpKG5VtLvKU8wvLD2"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:23
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/api/questions_controller.rb:37
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/questions_controller.rb:38
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 9]]
+  ↳ app/controllers/api/questions_controller.rb:38
+  [1m[36mQuestion Destroy (0.5ms)[0m  [1m[31mDELETE FROM "questions" WHERE "questions"."id" = $1[0m  [["id", 9]]
+  ↳ app/controllers/api/questions_controller.rb:38
+  [1m[35m (6.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/questions_controller.rb:38
+Completed 200 OK in 16ms (Views: 0.3ms | ActiveRecord: 7.4ms)
+
+
+Started DELETE "/api/quizzes/2/questions/8" for 127.0.0.1 at 2018-09-23 16:08:41 -0400
+Processing by Api::QuestionsController#destroy as */*
+  Parameters: {"quiz_id"=>"2", "id"=>"8", "question"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "yQwow2LhpKG5VtLvKU8wvLD2"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:23
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/questions_controller.rb:37
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/questions_controller.rb:38
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 8]]
+  ↳ app/controllers/api/questions_controller.rb:38
+  [1m[36mQuestion Destroy (0.5ms)[0m  [1m[31mDELETE FROM "questions" WHERE "questions"."id" = $1[0m  [["id", 8]]
+  ↳ app/controllers/api/questions_controller.rb:38
+  [1m[35m (5.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/questions_controller.rb:38
+Completed 200 OK in 12ms (Views: 0.3ms | ActiveRecord: 7.3ms)
+
+
+Started DELETE "/api/quizzes/2/questions/7" for 127.0.0.1 at 2018-09-23 16:08:47 -0400
+Processing by Api::QuestionsController#destroy as */*
+  Parameters: {"quiz_id"=>"2", "id"=>"7", "question"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "yQwow2LhpKG5VtLvKU8wvLD2"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:23
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/api/questions_controller.rb:37
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/questions_controller.rb:38
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 7]]
+  ↳ app/controllers/api/questions_controller.rb:38
+  [1m[36mQuestion Destroy (0.4ms)[0m  [1m[31mDELETE FROM "questions" WHERE "questions"."id" = $1[0m  [["id", 7]]
+  ↳ app/controllers/api/questions_controller.rb:38
+  [1m[35m (5.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/questions_controller.rb:38
+Completed 200 OK in 11ms (Views: 0.2ms | ActiveRecord: 7.1ms)
+
+
+Started GET "/api/quizzes/1/questions" for 127.0.0.1 at 2018-09-23 16:11:33 -0400
+Processing by Api::QuestionsController#index as */*
+  Parameters: {"quiz_id"=>"1", "question"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "yQwow2LhpKG5VtLvKU8wvLD2"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:23
+  [1m[36mQuiz Load (0.4ms)[0m  [1m[34mSELECT  "quizzes".* FROM "quizzes" WHERE "quizzes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/questions_controller.rb:7
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."quiz_id" = $1[0m  [["quiz_id", 1]]
+  ↳ app/controllers/api/questions_controller.rb:9
+Completed 200 OK in 5ms (Views: 1.6ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/api/quizzes/1/questions" for 127.0.0.1 at 2018-09-23 16:13:02 -0400
+Processing by Api::QuestionsController#create as */*
+  Parameters: {"quiz_id"=>"1", "q_text"=>"Why so many people go crazy?", "question"=>{"quiz_id"=>"1", "q_text"=>"Why so many people go crazy?"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "yQwow2LhpKG5VtLvKU8wvLD2"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:23
+  [1m[36mQuiz Load (0.2ms)[0m  [1m[34mSELECT  "quizzes".* FROM "quizzes" WHERE "quizzes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/questions_controller.rb:18
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/questions_controller.rb:19
+  [1m[36mQuestion Create (0.5ms)[0m  [1m[32mINSERT INTO "questions" ("quiz_id", "q_text", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["quiz_id", 1], ["q_text", "Why so many people go crazy?"], ["created_at", "2018-09-23 20:13:02.655610"], ["updated_at", "2018-09-23 20:13:02.655610"]]
+  ↳ app/controllers/api/questions_controller.rb:19
+  [1m[35m (5.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/questions_controller.rb:19
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/questions_controller.rb:20
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/questions_controller.rb:20
+Completed 200 OK in 13ms (Views: 0.3ms | ActiveRecord: 7.2ms)
+
+
+Started PATCH "/api/quizzes/1/questions/12" for 127.0.0.1 at 2018-09-23 16:14:03 -0400
+Processing by Api::QuestionsController#update as */*
+  Parameters: {"quiz_id"=>"1", "q_text"=>"Why so many silly people go crazy?", "id"=>"12", "question"=>{"quiz_id"=>"1", "q_text"=>"Why so many silly people go crazy?"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "yQwow2LhpKG5VtLvKU8wvLD2"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:23
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/api/questions_controller.rb:28
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/questions_controller.rb:29
+  [1m[36mQuiz Load (0.2ms)[0m  [1m[34mSELECT  "quizzes".* FROM "quizzes" WHERE "quizzes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/questions_controller.rb:29
+  [1m[36mQuestion Update (0.4ms)[0m  [1m[33mUPDATE "questions" SET "q_text" = $1, "updated_at" = $2 WHERE "questions"."id" = $3[0m  [["q_text", "Why so many silly people go crazy?"], ["updated_at", "2018-09-23 20:14:03.459023"], ["id", 12]]
+  ↳ app/controllers/api/questions_controller.rb:29
+  [1m[35m (5.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/questions_controller.rb:29
+Completed 201 Created in 13ms (Views: 0.4ms | ActiveRecord: 6.9ms)
+
+
