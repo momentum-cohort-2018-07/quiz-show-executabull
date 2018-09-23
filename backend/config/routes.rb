@@ -4,7 +4,9 @@ Rails.application.routes.draw do
       resources :users
       resource :logins, only: :create
       resources :quizzes, only: [:index, :update, :create, :show, :destroy] do
-        resources :questions
+        resources :questions, only: [:create, :destroy] do
+          resources :answers, only: [:create, :destroy]
+        end
       end
     end
 end
