@@ -19,7 +19,7 @@ header {
   border: 2px solid blue;
   display: inline-block;
   width: 20%;
-  height: 90vh;
+  height: 85vh;
   text-align: center;
   vertical-align: top;
 }
@@ -31,7 +31,7 @@ header {
 .main-container {
   border: 1px solid black;
   display: inline-block;
-  height: 90vh;
+  height: 85vh;
   width: 80%;
   vertical-align: top;
 }
@@ -69,5 +69,3 @@ display: inline-block;
 .register-button {
   margin: 15px 0px 0px 72%;
 }
-
-

@@ -4,6 +4,7 @@ import {
   Route,
   Redirect
 } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import 'bulma/css/bulma.css'
 import './App.css'
 import Dashboard from './Dashboard'
@@ -55,11 +56,12 @@ class App extends Component {
         <div id='root'>
           <div className='App'>
             <header className='App-header'>
-              <h1 className='App-title'><strong>Quiz-a-Bull</strong></h1>
+              <h1 className='App-title'><strong>QuizzaBull</strong></h1>
             </header>
             <div className='board'>
-              {/* <RegistrationForm currentuser={this.setCurrentUser} /> */}
-              <LoginForm currentuser={this.setCurrentUser} />
+              {/* <RegistrationForm currentUser={this.state.CurrentUser} setCurrentUser={this.setCurrentUser} /> */}
+              {/* <LoginForm currentUser={this.state.CurrentUser} setCurrentUser={this.setCurrentUser} /> */}
+              <Dashboard currentUser={this.state.CurrentUser} setcurrentUser={this.setCurrentUser} logout={this.logout} />
             </div>
           </div>
         </div>
@@ -67,5 +69,14 @@ class App extends Component {
     )
   }
 }
+
+// App.propTypes = {
+//   currentUser: PropTypes.shape({
+//     username: PropTypes.string,
+//     token: PropTypes.string
+//   }).isRequired,
+//   setCurrentUser: PropTypes.func.isRequired,
+//   logout: PropTypes.func.isRequired
+// }
 
 export default App

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import 'bulma/css/bulma.css'
+import PropTypes from 'prop-types'
 import data from './data'
 
 class LoginForm extends Component {
@@ -10,6 +11,7 @@ class LoginForm extends Component {
       password: '',
       errorMsg: null
     }
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleSubmit (event) {
@@ -22,21 +24,21 @@ class LoginForm extends Component {
           errorMsg: err.message
         })
       })
+    console.log()
   }
 
   render () {
-      const { username, password, errorMsg } = this.state
+    const { username, password } = this.state
     return (
       <div>
         <section className='sidebar'>
           <div className='sidebar-container'>
-            <h3>Welcome to Quiz-a-Bull!</h3>
+            <h3>Welcome to QuizzaBull!</h3>
             <div>Please Log In or Register</div>
           </div>
         </section>
         <section className='main-container'>
-            {/* {errorMsg && <Notification } */}
-          <form className='login-form' onSubmit={this.handlesubmit}>
+          <form className='login-form' onSubmit={this.handleSubmit}>
             <h2 id='login-title'>Log In</h2>
             <label className='label username'>Username</label>
             <div className='control'>
