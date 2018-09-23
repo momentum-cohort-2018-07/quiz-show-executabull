@@ -21,7 +21,7 @@ class Dashboard extends Component {
   render () {
     const { currentUser, id } = this.props
     const { quizzes } = this.state
-    console.log()
+    console.log(this.state.quizzes)
 
     return (
       <div>

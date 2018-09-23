@@ -2,9 +2,9 @@ import request from 'superagent'
 
 let userToken
 // const apiDomain = process.env.REACT_APP_API_DOMAIN
-// const apiDomain= 'https://quizzabull.herokuapp.com/'
+const apiDomain = 'https://quizzabull.herokuapp.com/'
 
-const apiDomain = 'https://quizzlybear-api.herokuapp.com'
+// const apiDomain = 'https://quizzlybear-api.herokuapp.com'
 
 const data = {
   setUserToken: (token) => {
@@ -14,7 +14,7 @@ const data = {
     return userToken
   },
   login: (username, password) => {
-    return request.post(`${apiDomain}/api/login`)
+    return request.post(`${apiDomain}/api/logins`)
       .send({username, password})
       .then(res => res.body.token)
       .then(token => {
@@ -35,7 +35,6 @@ const data = {
         data.setUserToken(user.token)
         return user
       })
-    //   .then(() => checkAdminStatus ())
       .catch(err => {
         if (err.response.statusCody === 422) {
           const errors = err.response.body.errors
@@ -48,7 +47,7 @@ const data = {
       })
   },
   getQuizzes: () => {
-    return request.get(`${apiDomain}/api/quizzes`)
+    return (request.get(`${apiDomain}/api/quizzes`)
       .set('Authorization', `Bearer ${userToken}`)
       .then(res => res.body.quizzes)
     //   if (user.admin === true) {
@@ -56,7 +55,7 @@ const data = {
     //   } else {
     //     return {quizzes.published}
     // }
-  },
+    )},
   getPastScores: () => {
     return request.get(`${apiDomain}/api/scores`)
       .set('Authorization', `Bearer ${userToken}`)
