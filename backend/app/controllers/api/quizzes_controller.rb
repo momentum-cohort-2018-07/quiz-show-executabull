@@ -14,7 +14,9 @@ class Api::QuizzesController < ApplicationController
 
     def show
         @quiz = Quiz.find(params[:id])
-        render json: @quiz
+        # render json: { id: @quiz.id, title: @quiz.title,
+        #   questions: @quiz.questions.all, answers: questions.answers.all }
+        render :show
     end
 
     def create
