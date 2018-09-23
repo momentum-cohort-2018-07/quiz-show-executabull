@@ -47,8 +47,4 @@ class Api::QuestionsController < ApplicationController
     def question_params
         params.require(:question).permit(:quiz_id, :q_text)
     end
-
-
-
-
 end
