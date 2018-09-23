@@ -60,8 +60,8 @@ class App extends Component {
             </header>
             <div className='board'>
               {/* <RegistrationForm currentUser={this.state.CurrentUser} setCurrentUser={this.setCurrentUser} /> */}
-              {/* <LoginForm currentUser={this.state.CurrentUser} setCurrentUser={this.setCurrentUser} /> */}
-              <Dashboard currentUser={this.state.CurrentUser} setcurrentUser={this.setCurrentUser} logout={this.logout} />
+              <LoginForm currentUser={this.state.CurrentUser} setCurrentUser={this.setCurrentUser} />
+              {/* <Dashboard currentUser={this.state.CurrentUser} setcurrentUser={this.setCurrentUser} logout={this.logout} /> */}
             </div>
           </div>
         </div>
