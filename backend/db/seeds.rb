@@ -14,15 +14,15 @@ Question.destroy_all
 Quiz.destroy_all
 
 User.create!(
-  name: 'Bull',
-  username: 'Boss',
+  name: 'Generic Boss',
+  username: 'firstadmin',
   password: '123',
   admin: true
 )
 
 User.create!(
-  name: 'user1',
-  username: 'ultimateuser',
+  name: 'Bob',
+  username: 'firstuser',
   password: '123',
   admin: false
 )
