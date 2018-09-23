@@ -4,16 +4,13 @@ class Api::QuestionsController < ApplicationController
     
     
     def index
-        @questions = Question.all
-      if admin_user 
-        render json: @questions
-      else
-        render json: @questions.where(published:true)
-      end
+      @quiz = Quiz.find(params[:quiz_id])
+      @questions = Question.where(:quiz_id => @quiz.id)
+      render json: @questions
     end
 
     def show
-        @question = Question.find(params[:id])
+        @question = Question.find(params[:quiz_id])
         render json: @question
     end
 
