@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+import { NavLink } from 'react-router-dom'
 import 'bulma/css/bulma.css'
 import data from './data'
 import Quiz from './Quiz'
+import PastScores from './PastScores'
 
 class Dashboard extends Component {
   constructor () {
@@ -21,6 +23,30 @@ class Dashboard extends Component {
     }
   }
 
+  renderPastScores () {
+    const {quiz, currentUser} = this.props
+    return (
+      <div>
+        <section className='sidebar'>
+          <div className='sidebar-container'>
+            {/* <h3>Welcome!</h3> */}
+            <h3>Welcome, {currentUser.username}!</h3>
+            <div><NavLink to='/' className='quizzes-home'>Quizzes</NavLink></div>
+            <div><button className='button logout-button' onClick={this.props.logout} >Log Out</button></div>
+          </div>
+        </section>
+        <section className='main-container'>
+          <h1 className='past-scores-title'>Past Scores</h1>
+          <div className='quizzes-display'>
+            {this.props.scores.map((score, quizId) => 
+              <PastScores currentUser={currentUser} setcurrentUser={this.setCurrentUser} quiz={quiz} />
+            )}
+          </div>
+        </section>
+      </div>
+    )
+  }
+
   render () {
     const { currentUser } = this.props
     return (
@@ -29,7 +55,7 @@ class Dashboard extends Component {
           <div className='sidebar-container'>
             {/* <h3>Welcome!</h3> */}
             <h3>Welcome, {currentUser.username}!</h3>
-            <div><a className='past-scores'>Past Scores</a></div>
+            <div><NavLink to='/pastscores' className='past-scores' onClick={this.renderPastScores}>Past Scores</NavLink></div>
             <div><button className='button logout-button' onClick={this.props.logout} >Log Out</button></div>
           </div>
         </section>

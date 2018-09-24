@@ -10,10 +10,10 @@ class PastScores extends Component {
   // }
 
   render () {
+    let { quiz } = this.props
     return (
       <div className='past-scores-div'>
-      <h1>PastScores</h1>
-      {/* {this.props.scores.map((score) => )} */}
+        <div> {quiz.scores}</div>
       </div>
 
     )
