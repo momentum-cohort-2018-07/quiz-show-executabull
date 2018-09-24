@@ -30,7 +30,7 @@ class Dashboard extends Component {
         <section className='sidebar'>
           <div className='sidebar-container'>
             {/* <h3>Welcome!</h3> */}
-            <h3>Welcome, {currentUser.username}!</h3>
+            <h3>Welcome, {currentUser.name}!</h3>
             <div><NavLink to='/' className='quizzes-home'>Quizzes</NavLink></div>
             <div><button className='button logout-button' onClick={this.props.logout} >Log Out</button></div>
           </div>
