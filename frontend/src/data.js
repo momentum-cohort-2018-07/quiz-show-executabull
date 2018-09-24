@@ -47,15 +47,17 @@ const data = {
       })
   },
   getQuizzes: () => {
-    return (request.get(`${apiDomain}/api/quizzes`)
+    return request.get(`${apiDomain}/api/quizzes`)
       .set('Authorization', `Bearer ${userToken}`)
-      .then(res => res.body.quizzes)
-    //   if (user.admin === true) {
-    //     return {quizzes.unpublished} + {quizzes.published}
-    //   } else {
-    //     return {quizzes.published}
-    // }
-    )},
+      .then(res => {
+        let quizzes = res.body
+        return (quizzes)
+      })
+      // if (user.admin === true) {
+      //   return {quizzes.unpublished} + {quizzes.published}
+      // } else {
+      //   return {quizzes.published}
+  },
   getPastScores: () => {
     return request.get(`${apiDomain}/api/scores`)
       .set('Authorization', `Bearer ${userToken}`)
@@ -66,6 +68,7 @@ const data = {
       .set('Authorization', `Bearer ${userToken}`)
       .then(res => res.body.quiz)
   }
+
 }
 
 export default data

@@ -24,10 +24,10 @@ class App extends Component {
       currentUser: null
     }
 
-    const username = window.localStorage.getItem('username')
+    const name = window.localStorage.getItem('name')
     const token = window.localStorage.getItem('token')
-    if (username && token) {
-      this.state.currentUser = {username, token}
+    if (name && token) {
+      this.state.currentUser = {name, token}
       data.setUserToken(token)
     }
 
@@ -36,9 +36,9 @@ class App extends Component {
   }
 
   setCurrentUser (user) {
-    window.localStorage.setItem('username', user.name)
+    window.localStorage.setItem('name', user.name)
     window.localStorage.setItem('token', user.token)
-    this.setState({ currentUser: user })
+    this.setState(state => ({ currentUser: user }))
   }
 
   logout () {
@@ -60,8 +60,27 @@ class App extends Component {
             </header>
             <div className='board'>
               {/* <RegistrationForm currentUser={this.state.CurrentUser} setCurrentUser={this.setCurrentUser} /> */}
-              <LoginForm currentUser={this.state.CurrentUser} setCurrentUser={this.setCurrentUser} />
+              {/* <LoginForm currentUser={this.state.CurrentUser} setCurrentUser={this.setCurrentUser} /> */}
               {/* <Dashboard currentUser={this.state.CurrentUser} setcurrentUser={this.setCurrentUser} logout={this.logout} /> */}
+
+              <Route exact path='/' render={() =>
+                <Guard condition={currentUser} redirectTo='./login'>
+                  <Dashboard currentUser={currentUser} setcurrentUser={this.setCurrentUser} logout={this.logout} />
+                </Guard>
+              } />
+
+              <Route path='/login' render={() =>
+                <Guard condition={!currentUser} redirectTo='/'>
+                  <LoginForm currentUser={currentUser} setCurrentUser={this.setCurrentUser} />
+                </Guard>
+              } />
+
+              <Route path='/register' render={() =>
+                <Guard condition={!currentUser} redirectTo='/'>
+                  <RegistrationForm currentUser={currentUser} setCurrentUser={this.setCurrentUser} />
+                </Guard>
+              } />
+
             </div>
           </div>
         </div>
@@ -70,6 +89,13 @@ class App extends Component {
   }
 }
 
+const Guard = ({ redirectTo, condition, children }) => {
+  if (condition) {
+    return children
+  } else {
+    return <Redirect to={redirectTo} />
+  }
+}
 // App.propTypes = {
 //   currentUser: PropTypes.shape({
 //     username: PropTypes.string,

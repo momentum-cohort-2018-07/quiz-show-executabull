@@ -69,3 +69,21 @@ display: inline-block;
 .register-button {
   margin: 15px 0px 0px 72%;
 }
+
+.dashboard-title {
+  font-size: 2.5rem;
+  padding: 5px 20px;
+}
+
+.quiz-overview {
+ border: 1px solid blue;
+ border-radius: 8px;
+ width: 25%;
+ display: inline-block;
+ height: 100px;
+ margin: 10px 25px;
+ text-align: center;
+ font-size: 1.2rem;
+ overflow: auto;
+ padding: 5px;
+}
