@@ -37,8 +37,8 @@ class Dashboard extends Component {
         </section>
         <section className='main-container'>
           <h1 className='past-scores-title'>Past Scores</h1>
-          <div className='quizzes-display'>
-            {this.props.scores.map((score, quizId) => 
+          <div className='past-scores-display'>
+            {this.props.scores.map((score, quizId) =>
               <PastScores currentUser={currentUser} setcurrentUser={this.setCurrentUser} quiz={quiz} />
             )}
           </div>
