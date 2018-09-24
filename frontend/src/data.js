@@ -53,10 +53,10 @@ const data = {
         let quizzes = res.body
         return (quizzes)
       })
-    //   if (user.admin === true) {
-    //     return {quizzes.unpublished} + {quizzes.published}
-    //   } else {
-    //     return {quizzes.published}
+      // if (user.admin === true) {
+      //   return {quizzes.unpublished} + {quizzes.published}
+      // } else {
+      //   return {quizzes.published}
   },
   getPastScores: () => {
     return request.get(`${apiDomain}/api/scores`)

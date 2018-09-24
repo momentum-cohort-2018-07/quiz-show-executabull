@@ -13,6 +13,7 @@ class LoginForm extends Component {
       errorMsg: null
     }
     this.handleSubmit = this.handleSubmit.bind(this)
+    // this.currentUser = this.currentUser.bind(this)
   }
 
   handleSubmit (event) {
@@ -25,7 +26,6 @@ class LoginForm extends Component {
           errorMsg: err.message
         })
       })
-    console.log()
   }
 
   render () {
