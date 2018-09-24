@@ -3,13 +3,6 @@ import 'bulma/css/bulma.css'
 import data from './data'
 
 class Results extends Component {
-  constructor () {
-    super()
-    this.state = {
-      errorMsg: null
-    }
-  }
-
   // componentDidMount () {
   //   const { currentUser, quizScores } = this.props
   //   if (currentUser && currentUser.token) {
