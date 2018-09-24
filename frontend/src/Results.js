@@ -1,19 +1,21 @@
 import React, { Component } from 'react'
 import 'bulma/css/bulma.css'
+import data from './data'
 
 class Results extends Component {
-  constructor () {
-    super()
-    this.state = {
-      username: '',
-      password: '',
-      errorMsg: null
-    }
-  }
+  // componentDidMount () {
+  //   const { currentUser, quizScores } = this.props
+  //   if (currentUser && currentUser.token) {
+  //     data.getResults().then(quizzes => this.setState(state => ({quizzes: quizzes})))
+  //   }
+  //   console.log(this.state.quizzes)
+  // }
 
   render () {
     return (
-      <h1>Results</h1>
+      <div className='results-div'>
+        <h1>Results</h1>
+      </div>
     )
   }
 }
