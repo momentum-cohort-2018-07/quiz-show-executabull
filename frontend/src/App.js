@@ -36,8 +36,9 @@ class App extends Component {
   }
 
   setCurrentUser (user) {
-    window.localStorage.setItem('username', user.name)
+    window.localStorage.setItem('username', user.username)
     window.localStorage.setItem('token', user.token)
+    window.localStorage.setItem('name', user.name)
     this.setState({ currentUser: user })
   }
 
@@ -60,8 +61,27 @@ class App extends Component {
             </header>
             <div className='board'>
               {/* <RegistrationForm currentUser={this.state.CurrentUser} setCurrentUser={this.setCurrentUser} /> */}
-              <LoginForm currentUser={this.state.CurrentUser} setCurrentUser={this.setCurrentUser} />
+              {/* <LoginForm currentUser={this.state.CurrentUser} setCurrentUser={this.setCurrentUser} /> */}
               {/* <Dashboard currentUser={this.state.CurrentUser} setcurrentUser={this.setCurrentUser} logout={this.logout} /> */}
+
+              <Route exact path='/' render={() =>
+                <Guard condition={this.state.currentUser} redirectTo='./login'>
+                  <Dashboard currentUser={this.state.CurrentUser} setcurrentUser={this.setCurrentUser} logout={this.logout} />
+                </Guard>
+              } />
+
+              <Route path='/login' render={() =>
+                <Guard condition={!this.state.currentUser} redirectTo='/'>
+                  <LoginForm currentUser={this.state.CurrentUser} setCurrentUser={this.setCurrentUser} />
+                </Guard>
+              } />
+
+              <Route path='/register' render={() =>
+                <Guard condition={!this.state.currentUser} redirectTo='/'>
+                  <RegistrationForm currentUser={this.state.CurrentUser} setCurrentUser={this.setCurrentUser} />
+                </Guard>
+              } />
+
             </div>
           </div>
         </div>
@@ -70,6 +90,13 @@ class App extends Component {
   }
 }
 
+const Guard = ({ redirectTo, condition, children }) => {
+  if (condition) {
+    return children
+  } else {
+    return <Redirect to={redirectTo} />
+  }
+}
 // App.propTypes = {
 //   currentUser: PropTypes.shape({
 //     username: PropTypes.string,

@@ -2,18 +2,13 @@ import React, { Component } from 'react'
 import 'bulma/css/bulma.css'
 
 class Quiz extends Component {
-  constructor () {
-    super()
-    this.state = {
-      username: '',
-      password: '',
-      errorMsg: null
-    }
-  }
-
   render () {
+    let {quiz} = this.props
     return (
-      <h1>Quiz</h1>
+      <div>
+        <div key={quiz.id} className='quiz-title has-text-weight-bold'>{quiz.title}</div>
+        <div classname='question-count'>{quiz.numberofquestions}</div>
+      </div>
     )
   }
 }
