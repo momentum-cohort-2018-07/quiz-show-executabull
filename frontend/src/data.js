@@ -16,10 +16,10 @@ const data = {
   login: (username, password) => {
     return request.post(`${apiDomain}/api/logins`)
       .send({username, password})
-      .then(res => res.body.token)
-      .then(token => {
-        data.setUserToken(token)
-        return { username, token }
+      .then(res => res.body)
+      .then(user => {
+        data.setUserToken(user.token)
+        return user
       })
       .catch(err => {
         if (err.response.statusCode === 401) {
