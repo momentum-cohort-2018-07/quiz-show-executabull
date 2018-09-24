@@ -4,11 +4,12 @@ class Api::QuizzesController < ApplicationController
     
     
     def index
-        @quizzes = Quiz.all
+      @quizzes = Quiz.all
       if admin_user 
-        render json: @quizzes
+        render :index
       else
-        render json: @quizzes.where(published:true)
+        @quizzes = @quizzes.where(published:true)
+        render :index
       end
     end
 
