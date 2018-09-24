@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import 'bulma/css/bulma.css'
 import data from './data'
+import Quiz from './Quiz'
 
 class Dashboard extends Component {
   constructor () {
@@ -14,32 +15,30 @@ class Dashboard extends Component {
     const {currentUser} = this.props
     if (currentUser && currentUser.token) {
       data.setUserToken(currentUser.token)
-      data.getQuizzes().then(quizzes => this.setState(state => ({quizzes: quizzes})))
+      data.getQuizzes().then(quizzes => {
+        this.setState(state => ({quizzes}))
+      })
     }
   }
 
   render () {
-    const { currentUser, id } = this.props
-    const { quizzes } = this.state
-    console.log()
-
+    const { currentUser } = this.props
     return (
       <div>
         <section className='sidebar'>
           <div className='sidebar-container'>
-            <h3>Welcome!</h3>
-            {/* <h3>Welcome, {currentUser.name}!</h3> */}
-            <a className='past-scores'>Past Scores</a>
-            <button className='button logout-button' onClick={this.props.logout} >Log Out</button>
+            {/* <h3>Welcome!</h3> */}
+            <h3>Welcome, {currentUser.username}!</h3>
+            <div><a className='past-scores'>Past Scores</a></div>
+            <div><button className='button logout-button' onClick={this.props.logout} >Log Out</button></div>
           </div>
         </section>
         <section className='main-container'>
-            <div><h1>Quizzes</h1></div>
+          <h1 className='dashboard-title'>Quizzes</h1>
           <div className='quizzes-display'>
-            
-            {/* {this.state.quizzes.map((quiz) =>
-              <QuizOverview quizzes={quizzes} />
-            )} */}
+            {this.state.quizzes.map((quiz) =>
+              <Quiz key={quiz.id} quiz={quiz} />
+            )}
           </div>
         </section>
       </div>
@@ -49,16 +48,6 @@ class Dashboard extends Component {
 
 export default Dashboard
 
-const QuizOverview = ({ quiz }) => {
-  return (
-    <div className='quiz-overview'>
-      <a className='quiz-content'>
-        <div className='quiz-title has-text-weight-bold'> title</div>
-        <div classname='question-count'>question number</div>
-      </a>
-    </div>
-  )
-}
 // Dashboard
 // USER if published quiz
 // Get:
