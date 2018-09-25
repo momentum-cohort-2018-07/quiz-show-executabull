@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
-import 'bulma/css/bulma.css'
+import {Notification} from 'bulma/css/bulma.css'
 import PropTypes from 'prop-types'
 import data from './data'
+import App from './App'
 
 class LoginForm extends Component {
   constructor () {
@@ -29,7 +30,7 @@ class LoginForm extends Component {
   }
 
   render () {
-    const { username, password } = this.state
+    const { username, password, errorMsg } = this.state
     return (
       <div>
         <section className='sidebar'>
@@ -39,6 +40,9 @@ class LoginForm extends Component {
           </div>
         </section>
         <section className='main-container'>
+          {errorMsg && <Notification isColor='danger'>
+            {errorMsg}
+          </Notification>}
           <form className='login-form' onSubmit={this.handleSubmit}>
             <h2 id='login-title'>Log In</h2>
             <label className='label username'>Username</label>
