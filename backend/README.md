@@ -2,7 +2,7 @@
 
 Welcome to the API docs.
 
-All API access is over HTTP, and accessed from **TODO**. All data is sent and received as JSON.
+All API access is over HTTP, and accessed from `quizzabull.herokuapp.com`. All data is sent and received as JSON.
 
 ## :lock: Symbol = Requires Token
 
