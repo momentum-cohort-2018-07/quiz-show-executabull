@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { NavLink } from 'react-router-dom'
 import 'bulma/css/bulma.css'
 import PropTypes from 'prop-types'
 import data from './data'
@@ -12,6 +13,7 @@ class LoginForm extends Component {
       errorMsg: null
     }
     this.handleSubmit = this.handleSubmit.bind(this)
+    // this.currentUser = this.currentUser.bind(this)
   }
 
   handleSubmit (event) {
@@ -24,7 +26,6 @@ class LoginForm extends Component {
           errorMsg: err.message
         })
       })
-    console.log()
   }
 
   render () {
@@ -50,7 +51,7 @@ class LoginForm extends Component {
             </div>
             <div className='register-info'>
               <span className='register'>Click here to</span>&nbsp;
-              <a className='register'>Register</a>
+              <NavLink to='/register' className='register'>Register</NavLink>
             </div>
             <button type='submit' className='button is-primary login-button'>Sign In</button>
           </form>

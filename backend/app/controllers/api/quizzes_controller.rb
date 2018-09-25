@@ -11,6 +11,7 @@ class Api::QuizzesController < ApplicationController
     render :index
   end
 
+
   def show
     @quiz = Quiz.find(params[:id])
     render :show
@@ -40,6 +41,7 @@ class Api::QuizzesController < ApplicationController
       render json: { status: 'Deleted, yo' }
     else
       render json: @quiz.errors, status: :unprocessable_entity
+
     end
   end
 

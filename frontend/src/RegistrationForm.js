@@ -70,9 +70,9 @@ class RegistrationForm extends Component {
   }
 }
 
-RegistrationForm.propTypes = {
+// RegistrationForm.propTypes = {
 
-}
+// }
 
 export default RegistrationForm
 
