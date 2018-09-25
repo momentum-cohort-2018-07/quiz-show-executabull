@@ -1,21 +1,23 @@
 class Api::ScoresController < ApplicationController
-  def show; end
+  def show
+  end
 
   def create
     @correct_count = 0
-    @user.id = user_id
-    @quiz.id = quiz_id
-    @answers.each do
-      @correct_count += @answer.correct
+
+    answers = params[:answers]
+    answers.each do |answer|
+      a_id = Answer.find(answer)
+      @correct_count += a_id.correct
     end
 
     Score.create!(
       quiz_id: params[:quiz_id],
-      user_id: current_user.id,
+      user_id: params[:user_id],
       score: @correct_count
     )
 
-    render json: { "Ay, yo - your score is": @current_count }
+    render json: { "Score": @correct_count }
   end
 
   private
