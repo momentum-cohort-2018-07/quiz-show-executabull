@@ -1,21 +1,19 @@
 import React, { Component } from 'react'
 import 'bulma/css/bulma.css'
 
-class Quiz extends Component {
+class UpdateQuiz extends Component {
   constructor () {
-    super()
+    super ()
     this.state = {
-      username: '',
-      password: '',
-      errorMsg: null
+      editing: true
     }
   }
-
   render () {
+    let { quiz } = this.props
     return (
-      <h1>Quiz</h1>
+    
     )
   }
 }
 
-export default Quiz
+export default UpdateQuiz

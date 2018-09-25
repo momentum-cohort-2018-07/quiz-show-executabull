@@ -27,8 +27,11 @@ class Api::QuestionsController < ApplicationController
     
     def update 
       @question = Question.find(params[:id])
-      if @question.update(question_params)
-      render json: @question, status: :created
+      @quiz = Quiz.find(params[:quiz_id])
+      if @quiz.published
+        render json: {error: "Cannot update a published quiz"}
+      elsif @question.update(question_params)
+        render json: @question, status: :created
       else 
         render json: @question.errors, status: :unprocessable_entity
       end
@@ -36,7 +39,10 @@ class Api::QuestionsController < ApplicationController
     
     def destroy
         @question = Question.find(params[:id])
-        if @question.destroy
+        @quiz = Quiz.find(params[:quiz_id])
+        if @quiz.published
+          render json: {error: "Cannot update a published quiz"}
+        elsif @question.destroy
           render json: { status: 'Deleted, yo'}
         else
           render json: @question.errors, status: :unprocessable_entity

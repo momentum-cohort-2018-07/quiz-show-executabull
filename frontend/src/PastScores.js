@@ -2,18 +2,20 @@ import React, { Component } from 'react'
 import 'bulma/css/bulma.css'
 
 class PastScores extends Component {
-  constructor () {
-    super()
-    this.state = {
-      username: '',
-      password: '',
-      errorMsg: null
-    }
-  }
+  // constructor () {
+  //   super()
+  //   this.state = {
+  //     errorMsg: null
+  //   }
+  // }
 
   render () {
+    let { quiz } = this.props
     return (
-      <h1>PastScores</h1>
+      <div className='past-scores-div'>
+        <div> {quiz.scores}</div>
+      </div>
+
     )
   }
 }
