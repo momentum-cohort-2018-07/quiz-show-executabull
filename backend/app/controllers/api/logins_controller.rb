@@ -6,7 +6,7 @@ class Api::LoginsController < ApplicationController
     if @user && @user.authenticate(params[:password])
       render json: { name: @user.name, token: @user.token }
     else
-      render json: @user.errors
+      render json: @user.errors, status: :unprocessable_entity
     end
   end
 end
