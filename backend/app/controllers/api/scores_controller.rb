@@ -8,7 +8,7 @@ class Api::ScoresController < ApplicationController
 
   def create
     @correct_count = 0
-
+    @user = User.find_by_api_token(params[:token])
     answers = params[:answers]
     answers.each do |answer|
       a_id = Answer.find(answer)
@@ -17,7 +17,7 @@ class Api::ScoresController < ApplicationController
 
     Score.create!(
       quiz_id: params[:quiz_id],
-      user_id: params[:user_id],
+      user_id: @user.id,
       score: @correct_count
     )
 
