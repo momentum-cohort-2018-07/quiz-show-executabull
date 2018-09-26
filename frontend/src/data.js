@@ -2,7 +2,7 @@ import request from 'superagent'
 
 let userToken
 // const apiDomain = process.env.REACT_APP_API_DOMAIN
-const apiDomain = 'https://quizzabull.herokuapp.com/'
+const apiDomain = 'https://quizzabull.herokuapp.com'
 
 // const apiDomain = 'https://quizzlybear-api.herokuapp.com'
 
@@ -27,18 +27,18 @@ const data = {
         }
       })
   },
-  register: (username, password) => {
+  register: (username, password, name) => {
     return request.post(`${apiDomain}/api/users`)
-      .send({username, password})
+      .send({ username, password, name })
       .then(res => res.body)
       .then(user => {
         data.setUserToken(user.token)
         return user
       })
       .catch(err => {
-        if (err.response.statusCody === 422) {
+        if (err.response.statusCode === 422) {
           const errors = err.response.body.errors
-          if (errors[0] === 'user already exists') {
+          if (errors[0] === 'A user with that username already exists.') {
             throw new Error('A user with that username already exists.')
           } else {
             throw new Error(`An Unknown problem occurred: ${errors}`)
@@ -50,7 +50,7 @@ const data = {
     return request.get(`${apiDomain}/api/quizzes`)
       .set('Authorization', `Bearer ${userToken}`)
       .then(res => {
-        let quizzes = res.body
+        let quizzes = res.body.quizzes
         return (quizzes)
       })
   },
@@ -60,9 +60,21 @@ const data = {
       .then(res => res.body.scores)
   },
   getQuiz: (id) => {
-    return request.get(`${apiDomain}/api/quiz/${id}`)
+    return request.get(`${apiDomain}/api/quizzes/${id}`)
       .set('Authorization', `Bearer ${userToken}`)
       .then(res => res.body)
+  },
+  createQuiz: (quiz) => {
+    return request.post(`${apiDomain}/api/quizzes`)
+      .set('Authorization', `Bearer ${userToken}`)
+      .then(res => res.body)
+      .then(createdQuiz => {
+        return Object.assign({}, quiz, createdQuiz)
+      })
+  },
+  updateQuiz: (quiz) => {
+    return request.put(`${apiDomain}/api/quizzes/${quiz.id}`)
+      .set('Authorization', `Bearer ${userToken}`)
   }
 
 }

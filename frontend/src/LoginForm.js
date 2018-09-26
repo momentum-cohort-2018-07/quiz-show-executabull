@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import {Notification} from 'bulma/css/bulma.css'
-import PropTypes from 'prop-types'
 import data from './data'
-import App from './App'
 
 class LoginForm extends Component {
   constructor () {
