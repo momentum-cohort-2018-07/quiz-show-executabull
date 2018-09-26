@@ -99,7 +99,7 @@ display: inline-block;
  border-radius: 8px;
  width: 25%;
  display: inline-block;
- height: 150px;
+ height: 250px;
  margin: 10px 25px;
  text-align: center;
  font-size: 1.2rem;
@@ -121,7 +121,16 @@ display: inline-block;
 
 .edit-quiz {
   font-size: 1.1rem;
-  margin: 25px 0px 0px 0px;
+  margin: 10px 0px 0px 0px;
   padding: 8px;
   border-radius: 10px;
+}
+
+.quiz-title{ 
+  height: 50%;
+}
+
+.question-count {
+  margin: 20px 0px 0px 0px;
+  height: 40px;
 }

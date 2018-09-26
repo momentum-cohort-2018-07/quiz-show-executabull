@@ -7,16 +7,20 @@ class TakeQuiz extends Component {
   constructor () {
     super()
     this.state = {
-      quiz: [],
-      published: false
+      selectedQuiz: []
     }
+    this.startQuiz = this.startQuiz.bind(this)
   }
 
-  componentDidUpdate (quiz, id) {
-    const {currentUser} = this.props
+  componentDidMount () {
+    this.startQuiz()
+  }
+
+  startQuiz () {
+    const { currentUser, selectQuiz } = this.props
     if (currentUser && currentUser.token) {
       data.setUserToken(currentUser.token)
-      data.getQuiz().then(quiz => {
+      data.getQuiz(selectQuiz).then(quiz => {
         this.setState(state => ({quiz}))
       }
       )
@@ -24,14 +28,19 @@ class TakeQuiz extends Component {
   }
 
   render () {
-    let {quiz} = this.props
-    console.log(quiz)
+    let { selectedQuiz } = this.state
+    // console.log(this.props.selectQuiz, 'selectQuiz')
+    console.log(selectedQuiz, 'quiz')
     return (
       <div className='question-div'>
-        <h1 className='taking-quiz-title'>{quiz.title}</h1>
-        <div className='question'>{quiz.question}</div>
-        {quiz.answers.map((answer) =>
-          <div>{quiz.answer}</div>
+        {selectedQuiz.map((quiz) =>
+          <div>
+            <div className='taking-quiz-title'>{selectedQuiz.quiz_id}</div>
+            <div className='question'>question</div>
+            {quiz.questions.answers.map((answer) =>
+              <input key={quiz.quiz_id} type='radio'>{quiz.answer}</input>
+            )}
+          </div>
         )}
       </div>
     )

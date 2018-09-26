@@ -8,15 +8,16 @@ import TakeQuiz from './TakeQuiz'
 import QuizListAdmin from './QuizListAdmin'
 
 class Dashboard extends Component {
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
     this.state = {
       admin: '',
       pubQuizzes: [],
-      unpubQuizzes: [],
-      expanded: true
+      unpubQuizzes: []
+      // selectedQuiz: ''
     }
-    this.handleClick = this.handleClick.bind(this)
+    // this.renderTakeQuiz = this.renderTakeQuiz.bind(this)
+    // this.selectQuiz = this.selectQuiz.bind(this)
   }
 
   componentDidMount () {
@@ -30,11 +31,6 @@ class Dashboard extends Component {
         }))
       })
     }
-  }
-
-  handleClick () {
-    this.setState(state => ({ expanded: !state.expanded }))
-  // console.log(this.state.expand)
   }
 
   renderPastScores () {
@@ -51,7 +47,7 @@ class Dashboard extends Component {
         <section className='main-container'>
           <h1 className='past-scores-title'>Past Scores</h1>
           <div className='past-scores-display'>
-            {this.props.scores.map((score, quizId) =>
+            {this.props.scores.map((score, id) =>
               <PastScores currentUser={currentUser} setcurrentUser={this.setCurrentUser} quiz={quiz} />
             )}
           </div>
@@ -60,101 +56,36 @@ class Dashboard extends Component {
     )
   }
 
-  renderTakeQuiz () {
-    const { quiz, currentUser } = this.props
-    console.log(quiz.id)
+  render () {
+    const { currentUser } = this.props
+    // console.log(this.state.unpubQuizzes)
+    console.log(this.state.pubQuizzes)
     return (
       <div>
         <section className='sidebar'>
           <div className='sidebar-container'>
-            <h3>Welcome, {currentUser.name}!</h3>
-            <div><NavLink to='/' className='quizzes-home'>Quizzes</NavLink></div>
+            <h3 className='greeting'>Welcome, {currentUser.name}!</h3>
+            <div><NavLink to='/pastscores' className='past-scores' onClick={this.renderPastScores}>Past Scores</NavLink></div>
             <div><button className='button logout-button' onClick={this.props.logout} >Log Out</button></div>
           </div>
         </section>
         <section className='main-container'>
-          <h1 className='take-quiz-title'>{quiz.title}</h1>
-          <div className='take-quiz-display'>
-            {quiz.map((quizId) =>
-              <TakeQuiz key={quiz.id} currentUser={currentUser} setcurrentUser={this.setCurrentUser} quiz={quiz} takeQuiz={this.renderTakeQuiz} />
-            )}
+          <h1 className='dashboard-title'>Quizzes</h1>
+          <div className='quizzes-display'>
+            {this.state.unpubQuizzes.length > 0 &&
+            <QuizListAdmin currentUser={currentUser} unpubQuizzes={this.state.unpubQuizzes} selectQuiz={this.selectQuiz} /> }
+            <div>
+              {this.state.pubQuizzes.length > 0 &&
+              this.state.pubQuizzes.map((quiz) =>
+                <QuizList currentUser={currentUser} key={quiz.quiz_id} pubQuizzes={this.state.pubQuizzes} id={quiz.quiz_id} selectQuiz={this.selectQuiz} />
+              ) }
+            </div>
           </div>
         </section>
       </div>
-
     )
   }
-
-  render () {
-    const { currentUser } = this.props
-    // if (this.state.unpubQuizzes === ) {
-      return (
-        <div>
-          <section className='sidebar'>
-            <div className='sidebar-container'>
-              <h3 className='greeting'>Welcome, {currentUser.name}!</h3>
-              <div><NavLink to='/pastscores' className='past-scores' onClick={this.renderPastScores}>Past Scores</NavLink></div>
-              <div><button className='button logout-button' onClick={this.props.logout} >Log Out</button></div>
-            </div>
-          </section>
-          <section className='main-container'>
-            <h1 className='dashboard-title'>Quizzes</h1>
-            <div className='quizzes-display'>
-              {this.state.unpubQuizzes.length > 0 &&
-                this.state.expanded
-                ? (<div>
-                  <button className='button unpublished-title' onClick={this.handleClick}> &#x25BC; Unpublished Quizzes</button>
-                  <div>{this.state.unpubQuizzes.map((quiz) =>
-                    <QuizListAdmin key={quiz.id} quiz={quiz} />) }
-                  </div>
-                  <div className='published-title'>Published Quizzes</div>
-                </div>)
-                : (<div>
-                  <button className='button unpublished-title' onClick={this.handleClick}> &#x25B6; Unpublished Quizzes</button>
-                  <div className='published-title'>Published Quizzes</div>
-                </div>
-                )}
-              <div>
-                <div>
-                  {this.state.pubQuizzes.map((quiz) =>
-                    <QuizList key={quiz.id} quiz={quiz} />
-                  ) }
-                </div>
-              </div>
-
-            </div>
-          </section>
-        </div>
-      )
-    // } else if (!this.state.unpubQuizzes) {
-    //   return (
-    //     <div>
-    //       <section className='sidebar'>
-    //         <div className='sidebar-container'>
-    //           <h3 className='greeting'>Welcome, {currentUser.name}!</h3>
-    //           <div><NavLink to='/pastscores' className='past-scores' onClick={this.renderPastScores}>Past Scores</NavLink></div>
-    //           <div><button className='button logout-button' onClick={this.props.logout} >Log Out</button></div>
-    //         </div>
-    //       </section>
-    //       <section className='main-container'>
-    //         <h1 className='dashboard-title'>Quizzes</h1>
-    //         <div className='quizzes-display'>
-
-    //           <div>
-    //             <div>
-    //               {this.state.pubQuizzes.map((quiz) =>
-    //                 <QuizList key={quiz.id} quiz={quiz} />
-    //               ) }
-    //             </div>
-    //           </div>
-
-    //         </div>
-    //       </section>
-    //     </div>
-    //   )
-    }
-  }
-
+}
 
 export default Dashboard
 
