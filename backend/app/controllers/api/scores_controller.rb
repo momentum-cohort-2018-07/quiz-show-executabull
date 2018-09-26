@@ -2,6 +2,10 @@ class Api::ScoresController < ApplicationController
   def show
   end
 
+  def index
+    @scores = Score.all
+  end
+
   def create
     @correct_count = 0
 

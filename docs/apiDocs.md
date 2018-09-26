@@ -19,7 +19,7 @@ The request body should be:
 
 ```json
 {
-  "name": "firstandlastname",
+  "name": "Bob",
   "username": "firstuser",
   "password": 123
 }
@@ -29,14 +29,14 @@ The response will be:
 
 ```json
 {
-    "id": 11,
-    "name": "firstandlastname",
+    "id": 10,
+    "name": "Bob",
     "username": "firstuser",
-    "password_digest": "$2a$10$dwDtx4A7fqPxL4tXnBMfn.BOIY3HEAioRIUFHmIq5AjWvXbaSDYui",
-    "token": "LuqaQPvgH6F39r8yS8fm3VSm",
-    "admin": null,
-    "created_at": "2018-09-24T01:57:52.249Z",
-    "updated_at": "2018-09-24T01:57:52.249Z"
+    "password_digest": "$2a$10$uV2g7rjiBIsvBtd7Bxfh1eOcW4MJOj465zLAbW3DpZbwwPt8t55vK",
+    "token": "Esgqrwg3AFts1v2bTAkBNyYD",
+    "admin": false,
+    "created_at": "2018-09-23T23:10:50.358Z",
+    "updated_at": "2018-09-23T23:10:50.358Z"
 }
 ```
 
@@ -58,8 +58,8 @@ The response will be:
 
 ```json
 {
-  "name": "firstandlastname",
-  "token": "LuqaQPvgH6F39r8yS8fm3VSm"
+  "name": "Bob",
+  "token": "Esgqrwg3AFts1v2bTAkBNyYD"
 }
 ```
 
@@ -186,7 +186,7 @@ The request body should be:
 
 ```json
 {
-  "user_id": 1,
+  "user_id": 10,
   "quiz_id": 2,
   "answers": [14, 19, 23]
 }
