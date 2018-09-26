@@ -8,7 +8,7 @@ class Api::ScoresController < ApplicationController
 
   def create
     @correct_count = 0
-    @user = User.find_by_api_token(params[:token])
+    @user = User.find_by(params[:token])
     answers = params[:answers]
     answers.each do |answer|
       a_id = Answer.find(answer)
@@ -22,11 +22,5 @@ class Api::ScoresController < ApplicationController
     )
 
     render json: { "Score": @correct_count }
-  end
-
-  private
-
-  def scores_params
-    params.permit(:answer_id)
   end
 end
