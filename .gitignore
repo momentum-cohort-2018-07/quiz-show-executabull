@@ -3,6 +3,7 @@
 .AppleDouble
 .LSOverride
 backend/tmp
+backend/log
 
 # Icon must end with two \r
 Icon
