@@ -12,7 +12,6 @@ class LoginForm extends Component {
       errorMsg: null
     }
     this.handleSubmit = this.handleSubmit.bind(this)
-    // this.currentUser = this.currentUser.bind(this)
   }
 
   handleSubmit (event) {

@@ -12,7 +12,6 @@ class QuizList extends Component {
 
   render () {
     let { quiz } = this.props
-    console.log(this.state.selectedQuiz)
     return (
       <Link to={`quiz/${quiz.quiz_id}`}>
         <div key={quiz.quiz_id} className='quiz-overview' onClick={() => this.props.selectQuiz(quiz.quiz_id)}>

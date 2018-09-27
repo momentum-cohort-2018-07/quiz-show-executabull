@@ -69,17 +69,20 @@ class TakeQuiz extends Component {
                 <h1 className='dashboard-title'>Quizzes</h1>
                 <form className='taking-quiz-display'>
                   <div className='taking-quiz-title'>{quiz.title}</div>
-                  {quiz.questions.map((questions, i) => (
-                    <div key={quiz.questions[i].answers[i].id}>
-                      <div className='question'><strong>{quiz.questions[i].q_text}</strong></div>
-                      {quiz.questions[i].answers.map((answer) => (
-                        <Control className='control answer' key={answer.id}>
-                          <Radio className='answer-input' name={quiz.questions.id} type='radio' value={answer.id} onChange={(e) => this.handleChange(e)} />
-                          <span>{answer.a_text}</span>
-                        </Control>
-                      ))}
-                    </div>
-                  ))}
+                  <div className='questions-div control'>
+                    {quiz.questions.map((questions, i) => (
+                      <div key={quiz.questions[i].answers[i].id}>
+                        <div className='question'><strong>{quiz.questions[i].q_text}</strong></div>
+                        {quiz.questions[i].answers.map((answer) => (
+                          <Control className='control answer' key={answer.id}>
+
+                            <Radio className='answer-input' name={quiz.questions.id} type='radio' value={answer.id} onChange={(e) => this.handleChange(e)} />
+                            <label htmlFor={answer.id}>{answer.a_text}</label>
+                          </Control>
+                        ))}
+                      </div>
+                    ))}
+                  </div>
                   <button className='score-quiz' type='submit' onClick={() => this.handleSubmit(this.state.quiz.id, this.state.selectedAnswers)}>Score Quiz!</button>
                 </form>
               </section>
