@@ -1,22 +1,24 @@
 import React, { Component } from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import 'bulma/css/bulma.css'
 
 class QuizList extends Component {
-  handleClick () {
-    this.props.renderTakeQuiz()
-    console.log(this.props.quiz)
+  constructor () {
+    super()
+    this.state = {
+      quiz: []
+    }
   }
 
   render () {
     let { quiz } = this.props
     return (
-      <NavLink to='/quizzes/:id' onClick={(e) => this.handleClick}>
-        <div className='quiz-overview'>
-          <div key={quiz.id} className='quiz-title has-text-weight-bold'>{quiz.title}</div>
-          <div className='question-count'>{quiz.qnum}</div>
+      <Link to={`quiz/${quiz.quiz_id}`}>
+        <div key={quiz.quiz_id} className='quiz-overview' onClick={() => this.props.selectQuiz(quiz.quiz_id)}>
+          <div className='quiz-title has-text-weight-bold'>{quiz.quiz_title}</div>
+          <div className='question-count'>{quiz.q_num} Questions</div>
         </div>
-      </NavLink>
+      </Link>
     )
   }
 }

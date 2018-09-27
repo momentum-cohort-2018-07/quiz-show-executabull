@@ -4,15 +4,10 @@ import {
   Route,
   Redirect
 } from 'react-router-dom'
-import PropTypes from 'prop-types'
 import 'bulma/css/bulma.css'
 import './App.css'
 import Dashboard from './Dashboard'
 import TakeQuiz from './TakeQuiz'
-import Results from './Results'
-import NewQuiz from './NewQuiz'
-import EditQuiz from './EditQuiz'
-import PastScores from './PastScores'
 import LoginForm from './LoginForm.js'
 import RegistrationForm from './RegistrationForm'
 import data from './data'
@@ -59,13 +54,10 @@ class App extends Component {
               <h1 className='App-title'><strong>QuizzaBull</strong></h1>
             </header>
             <div className='board'>
-              {/* <RegistrationForm currentUser={this.state.CurrentUser} setCurrentUser={this.setCurrentUser} /> */}
-              {/* <LoginForm currentUser={this.state.CurrentUser} setCurrentUser={this.setCurrentUser} /> */}
-              {/* <Dashboard currentUser={this.state.CurrentUser} setcurrentUser={this.setCurrentUser} logout={this.logout} /> */}
 
               <Route exact path='/' render={() =>
-                <Guard condition={currentUser} redirectTo='./login'>
-                  <Dashboard currentUser={currentUser} setcurrentUser={this.setCurrentUser} logout={this.logout} />
+                <Guard condition={currentUser} redirectTo='/login'>
+                  <Dashboard currentUser={currentUser} setcurrentUser={this.setCurrentUser} logout={this.logout} selectQuiz={this.selectQuiz} />
                 </Guard>
               } />
 
@@ -81,6 +73,11 @@ class App extends Component {
                 </Guard>
               } />
 
+              <Route path='/quiz/:id' render={({ match }) =>
+                <Guard condition={currentUser} redirectTo='/'>
+                  <TakeQuiz quizId={match.params.id} currentUser={currentUser} setCurrentUser={this.setCurrentUser} logout={this.logout} selectQuiz={this.state.selectedQuiz} />
+                </Guard>
+              } />
             </div>
           </div>
         </div>
@@ -96,13 +93,5 @@ const Guard = ({ redirectTo, condition, children }) => {
     return <Redirect to={redirectTo} />
   }
 }
-// App.propTypes = {
-//   currentUser: PropTypes.shape({
-//     username: PropTypes.string,
-//     token: PropTypes.string
-//   }).isRequired,
-//   setCurrentUser: PropTypes.func.isRequired,
-//   logout: PropTypes.func.isRequired
-// }
 
 export default App

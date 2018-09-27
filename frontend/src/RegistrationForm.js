@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { Notification } from 'bulma/css/bulma.css'
-import PropTypes from 'prop-types'
 import data from './data'
-import App from './App'
 
 class RegistrationForm extends Component {
   constructor () {
@@ -19,22 +17,22 @@ class RegistrationForm extends Component {
 
   handleSubmit (event) {
     event.preventDefault()
-    const {username, password, passwordConfirmation} = this.state
+    const {username, password, passwordConfirmation, name} = this.state
     if (passwordConfirmation === password) {
-      data.register(username, password)
+      data.register(username, password, name)
         .then(user => this.props.setCurrentUser(user))
         .catch(err => {
-          this.setState(state => {
-            {errorMsg: err.message}
+          this.setState({
+            errorMsg: err.message
           })
         })
     } else {
       this.setState({errorMsg: 'Your passwords must match'})
     }
-    console.log(this.state.errorMsg)
   }
 
   render () {
+    console.log(this.state.errorMsg)
     const { name, username, password, passwordConfirmation, errorMsg } = this.state
     return (
       <div>
@@ -53,7 +51,6 @@ class RegistrationForm extends Component {
               </Notification>}
             </div>
             <form className='register-form' onSubmit={this.handleSubmit}>
-
               <h2 id='register-title'>Register</h2>
               <label className='label name'>Name</label>
               <div className='control'>
@@ -80,18 +77,4 @@ class RegistrationForm extends Component {
   }
 }
 
-// RegistrationForm.propTypes = {
-
-// }
-
 export default RegistrationForm
-
-// Register
-// Post:
-//   Name
-//   Username
-//   Password
-// Return:
-//   Name
-//   Token
-//   Admin?

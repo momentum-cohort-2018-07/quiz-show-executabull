@@ -1,8 +1,8 @@
-import request from 'superagent'
+import request from 'superagent/superagent.js'
 
 let userToken
 // const apiDomain = process.env.REACT_APP_API_DOMAIN
-const apiDomain = 'https://quizzabull.herokuapp.com/'
+const apiDomain = 'https://quizzabull.herokuapp.com'
 
 // const apiDomain = 'https://quizzlybear-api.herokuapp.com'
 
@@ -22,27 +22,26 @@ const data = {
         return user
       })
       .catch(err => {
-        if (err.response.statusCode === 401) {
+        if (err.response.statusCode === 422) {
           throw new Error('There is no user with that username')
         }
       })
   },
-  register: (username, password) => {
+  register: (username, password, name) => {
     return request.post(`${apiDomain}/api/users`)
-      .send({username, password})
+      .send({ username, password, name })
       .then(res => res.body)
       .then(user => {
         data.setUserToken(user.token)
         return user
       })
       .catch(err => {
-        if (err.response.statusCody === 422) {
-          const errors = err.response.body.errors
-          if (errors[0] === 'user already exists') {
-            throw new Error('A user with that username already exists.')
-          } else {
-            throw new Error(`An Unknown problem occurred: ${errors}`)
-          }
+        if (err.response.statusCode === 422) {
+          // const errorPass = err.response.body.password
+          // const errorName = err.reponse.body.name
+          // const errorUser = err.response.body.username
+          // let newArray = errorPass.concat(errorUser).concat(errorName)
+          throw new Error('test error')
         }
       })
   },
@@ -50,7 +49,7 @@ const data = {
     return request.get(`${apiDomain}/api/quizzes`)
       .set('Authorization', `Bearer ${userToken}`)
       .then(res => {
-        let quizzes = res.body
+        let quizzes = res.body.quizzes
         return (quizzes)
       })
   },
@@ -60,9 +59,28 @@ const data = {
       .then(res => res.body.scores)
   },
   getQuiz: (id) => {
-    return request.get(`${apiDomain}/api/quiz/${id}`)
+    return request.get(`${apiDomain}/api/quizzes/${id}`)
       .set('Authorization', `Bearer ${userToken}`)
       .then(res => res.body)
+  },
+  scoreQuiz: (quizId, answers) => {
+    return request.post(`${apiDomain}/api/scores/create`)
+      .set('Authorization', `Bearer ${userToken}`)
+      .send({quiz_id: quizId, answers: [answers]})
+      .then(res =>
+        res.body.data.score)
+  },
+  createQuiz: (quiz) => {
+    return request.post(`${apiDomain}/api/quizzes`)
+      .set('Authorization', `Bearer ${userToken}`)
+      .then(res => res.body)
+      .then(createdQuiz => {
+        return Object.assign({}, quiz, createdQuiz)
+      })
+  },
+  updateQuiz: (quiz) => {
+    return request.put(`${apiDomain}/api/quizzes/${quiz.id}`)
+      .set('Authorization', `Bearer ${userToken}`)
   }
 
 }

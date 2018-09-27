@@ -31,10 +31,10 @@ header {
 .greeting {
   font-size: 1.3rem;
   padding: 5px;
-  height: 100px;
+  height: 175px;
 }
 
-.past-scores {
+.past-scores, .quizzes {
   font-weight: bold;
   margin: 10px;
 }
@@ -99,7 +99,7 @@ display: inline-block;
  border-radius: 8px;
  width: 25%;
  display: inline-block;
- height: 150px;
+ height: 250px;
  margin: 10px 25px;
  text-align: center;
  font-size: 1.2rem;
@@ -121,7 +121,48 @@ display: inline-block;
 
 .edit-quiz {
   font-size: 1.1rem;
-  margin: 25px 0px 0px 0px;
+  margin: 10px 0px 0px 0px;
   padding: 8px;
   border-radius: 10px;
+}
+
+.quiz-title{ 
+  height: 50%;
+}
+
+.question-count {
+  margin: 20px 0px 0px 0px;
+  height: 40px;
+}
+
+.taking-quiz-display {
+  margin: 25px;
+
+}
+
+.taking-quiz-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 0px 10px;
+}
+
+.question {
+  margin: 10px 20px;
+}
+
+.answer {
+  margin: 0px 20px;
+  display: block;
+}
+
+.answer-input {
+  margin: 15px;
+  max-width: 20%;
+}
+
+.score-quiz {
+  padding: 15px;
+  border-radius: 15px;
+  font-size: 1.2rem;
+  margin: 20px 10px;
 }

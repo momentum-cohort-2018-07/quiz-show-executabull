@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import {Notification} from 'bulma/css/bulma.css'
-import PropTypes from 'prop-types'
 import data from './data'
-import App from './App'
 
 class LoginForm extends Component {
   constructor () {
@@ -14,7 +12,6 @@ class LoginForm extends Component {
       errorMsg: null
     }
     this.handleSubmit = this.handleSubmit.bind(this)
-    // this.currentUser = this.currentUser.bind(this)
   }
 
   handleSubmit (event) {
