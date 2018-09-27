@@ -23,8 +23,7 @@ class Dashboard extends Component {
     if (currentUser && currentUser.token) {
       data.setUserToken(currentUser.token)
       data.getQuizzes().then(quizzes => {
-        console.log("quizzes", quizzes)
-        this.setState(state => ({        
+        this.setState(state => ({
           pubQuizzes: quizzes.filter(quiz => quiz.published),
           unpubQuizzes: quizzes.filter(quiz => !quiz.published)
         }))
@@ -63,8 +62,6 @@ class Dashboard extends Component {
 
   render () {
     const { currentUser } = this.props
-    // console.log(this.state.unpubQuizzes)
-    console.log(this.state.pubQuizzes)
     return (
       <div>
         <section className='sidebar'>

@@ -10,7 +10,7 @@ class TakeQuiz extends Component {
     this.state = {
       quiz: [],
       selectedAnswers: [],
-      score: []
+      score: null
     }
     this.startQuiz = this.startQuiz.bind(this)
   }
@@ -24,7 +24,10 @@ class TakeQuiz extends Component {
     if (currentUser && currentUser.token) {
       data.setUserToken(currentUser.token)
       data.getQuiz(quizId).then(quiz => {
-        this.setState(state => ({quiz}))
+        this.setState(state => ({
+          quiz,
+          selectedAnswers: new Array(quiz.questions.length)
+        }))
       }
       )
     }
@@ -32,10 +35,10 @@ class TakeQuiz extends Component {
 
   handleChange (event) {
     let selectedAnswers = this.state.selectedAnswers
-    console.log(event.target.name, 'name', event.target.value, 'value')
+    let answers = selectedAnswers.slice()
+    answers[parseInt((event.target.name), 10)] = event.target.value
     this.setState({
-      selectedAnswers:
-      selectedAnswers.concat((event.target.value))
+      selectedAnswers: answers
     })
   }
 
@@ -52,9 +55,23 @@ class TakeQuiz extends Component {
     if (quiz.length !== 0) {
       return (
         <div>
-          {this.state.score.length !== 0
+          {this.state.score !== null
             ? <div>
-              <div>You scored {this.state.score} out of {Object.values(this.state.selectedAnswers).length}</div>
+              <section className='sidebar'>
+                <div className='sidebar-container'>
+                  <h3 className='greeting'>Welcome, {currentUser.name}!</h3>
+                  <div><Link to='/pastscores' className='past-scores' onClick={this.renderPastScores}>Past Scores</Link></div>
+                  <div><Link to='/' className='quizzes'>Quizzes</Link></div>
+                  <div><button className='button logout-button' onClick={this.props.logout} >Log Out</button></div>
+                </div>
+              </section>
+              <section className='main-container'>
+                <h1 className='dashboard-title'>Quizzes</h1>
+                <div className='taking-quiz-display'>
+                  <div><strong>You scored {this.state.score} out of {Object.values(this.state.selectedAnswers).length}</strong></div>
+                </div>
+                <button className='score-quiz'><Link to='/' className='quizzes'>Back to Quizzes</Link></button>
+              </section>
             </div>
             : <div>
               <section className='sidebar'>
@@ -67,24 +84,24 @@ class TakeQuiz extends Component {
               </section>
               <section className='main-container'>
                 <h1 className='dashboard-title'>Quizzes</h1>
-                <form className='taking-quiz-display'>
+                <div className='taking-quiz-display'>
                   <div className='taking-quiz-title'>{quiz.title}</div>
                   <div className='questions-div control'>
-                    {quiz.questions.map((questions, i) => (
-                      <div key={quiz.questions[i].answers[i].id}>
-                        <div className='question'><strong>{quiz.questions[i].q_text}</strong></div>
-                        {quiz.questions[i].answers.map((answer) => (
+                    {quiz.questions.map((question, i) => (
+                      <div key={question.answers[i].id}>
+                        <div className='question'><strong>{question.q_text}</strong></div>
+                        {question.answers.map((answer) => (
                           <Control className='control answer' key={answer.id}>
 
-                            <Radio className='answer-input' name={quiz.questions.id} type='radio' value={answer.id} onChange={(e) => this.handleChange(e)} />
+                            <Radio className='answer-input' name={String(i)} type='radio' value={answer.id} onChange={(e) => this.handleChange(e)} />
                             <label htmlFor={answer.id}>{answer.a_text}</label>
                           </Control>
                         ))}
                       </div>
                     ))}
                   </div>
-                  <button className='score-quiz' type='submit' onClick={() => this.handleSubmit(this.state.quiz.id, this.state.selectedAnswers)}>Score Quiz!</button>
-                </form>
+                  <button className='score-quiz' onClick={(e) => this.handleSubmit(this.state.quiz.id, this.state.selectedAnswers)}>Score Quiz!</button>
+                </div>
               </section>
             </div>
           }
@@ -92,7 +109,7 @@ class TakeQuiz extends Component {
       )
     } else {
       return (
-        <div> no questions </div>
+        <div> Please hold for questions </div>
       )
     }
   }
