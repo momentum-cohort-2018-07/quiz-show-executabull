@@ -1,4 +1,4 @@
-import request from 'superagent'
+import request from 'superagent/superagent.js'
 
 let userToken
 // const apiDomain = process.env.REACT_APP_API_DOMAIN
