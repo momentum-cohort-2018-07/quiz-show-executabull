@@ -66,9 +66,9 @@ const data = {
   scoreQuiz: (quizId, answers) => {
     return request.post(`${apiDomain}/api/scores/create`)
       .set('Authorization', `Bearer ${userToken}`)
-      .send({quiz_id: quizId, answers: [answers]})
+      .send({quiz_id: quizId, answers: answers})
       .then(res =>
-        res.body.data.score)
+        res.body.Score)
   },
   createQuiz: (quiz) => {
     return request.post(`${apiDomain}/api/quizzes`)
@@ -82,7 +82,6 @@ const data = {
     return request.put(`${apiDomain}/api/quizzes/${quiz.id}`)
       .set('Authorization', `Bearer ${userToken}`)
   }
-
 }
 
 export default data
