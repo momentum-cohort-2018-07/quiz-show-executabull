@@ -45,10 +45,10 @@ class RegistrationForm extends Component {
         <section className='main-container'>
           <div className='register-form-div'>
             <div>
-              {/* {errorMsg &&
+              {errorMsg &&
               <Notification isColor='danger'>
                 {errorMsg}
-              </Notification>} */}
+              </Notification>}
             </div>
             <form className='register-form' onSubmit={this.handleSubmit}>
               <h2 id='register-title'>Register</h2>

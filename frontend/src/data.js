@@ -22,7 +22,7 @@ const data = {
         return user
       })
       .catch(err => {
-        if (err.response.statusCode === 401) {
+        if (err.response.statusCode === 422) {
           throw new Error('There is no user with that username')
         }
       })
@@ -37,12 +37,11 @@ const data = {
       })
       .catch(err => {
         if (err.response.statusCode === 422) {
-          const errors = err.response.body.errors
-          if (errors[0] === 'A user with that username already exists.') {
-            throw new Error('A user with that username already exists.')
-          } else {
-            throw new Error(`An Unknown problem occurred: ${errors}`)
-          }
+          // const errorPass = err.response.body.password
+          // const errorName = err.reponse.body.name
+          // const errorUser = err.response.body.username
+          // let newArray = errorPass.concat(errorUser).concat(errorName)
+          throw new Error('test error')
         }
       })
   },
@@ -63,6 +62,13 @@ const data = {
     return request.get(`${apiDomain}/api/quizzes/${id}`)
       .set('Authorization', `Bearer ${userToken}`)
       .then(res => res.body)
+  },
+  scoreQuiz: (quizId, answers) => {
+    return request.post(`${apiDomain}/api/scores/create`)
+      .set('Authorization', `Bearer ${userToken}`)
+      .send({quiz_id: quizId, answers: [answers]})
+      .then(res =>
+        res.body.data.score)
   },
   createQuiz: (quiz) => {
     return request.post(`${apiDomain}/api/quizzes`)

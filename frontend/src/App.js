@@ -16,8 +16,7 @@ class App extends Component {
   constructor () {
     super()
     this.state = {
-      currentUser: null,
-      selectedQuiz: ''
+      currentUser: null
     }
 
     const name = window.localStorage.getItem('name')
@@ -29,7 +28,6 @@ class App extends Component {
 
     this.setCurrentUser = this.setCurrentUser.bind(this)
     this.logout = this.logout.bind(this)
-    this.selectQuiz = this.selectQuiz.bind(this)
   }
 
   setCurrentUser (user) {
@@ -46,12 +44,6 @@ class App extends Component {
     })
   }
 
-  selectQuiz (quiz) {
-    this.setState({
-      selectedQuiz: quiz
-    })
-  }
-
   render () {
     const { currentUser } = this.state
     return (
@@ -64,7 +56,7 @@ class App extends Component {
             <div className='board'>
 
               <Route exact path='/' render={() =>
-                <Guard condition={currentUser} redirectTo='./login'>
+                <Guard condition={currentUser} redirectTo='/login'>
                   <Dashboard currentUser={currentUser} setcurrentUser={this.setCurrentUser} logout={this.logout} selectQuiz={this.selectQuiz} />
                 </Guard>
               } />
@@ -81,9 +73,9 @@ class App extends Component {
                 </Guard>
               } />
 
-              <Route path='/quizzes/:id' render={({ match }) =>
+              <Route path='/quiz/:id' render={({ match }) =>
                 <Guard condition={currentUser} redirectTo='/'>
-                  <TakeQuiz currentUser={currentUser} setCurrentUser={this.setCurrentUser} logout={this.logout} selectQuiz={this.state.selectedQuiz} />
+                  <TakeQuiz quizId={match.params.id} currentUser={currentUser} setCurrentUser={this.setCurrentUser} logout={this.logout} selectQuiz={this.state.selectedQuiz} />
                 </Guard>
               } />
             </div>

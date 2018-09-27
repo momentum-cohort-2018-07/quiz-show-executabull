@@ -4,20 +4,18 @@ import 'bulma/css/bulma.css'
 import data from './data'
 import QuizList from './QuizList'
 import PastScores from './PastScores'
-import TakeQuiz from './TakeQuiz'
 import QuizListAdmin from './QuizListAdmin'
 
 class Dashboard extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      admin: '',
       pubQuizzes: [],
-      unpubQuizzes: []
-      // selectedQuiz: ''
+      unpubQuizzes: [],
+      selectedQuiz: ''
     }
     // this.renderTakeQuiz = this.renderTakeQuiz.bind(this)
-    // this.selectQuiz = this.selectQuiz.bind(this)
+    this.selectQuiz = this.selectQuiz.bind(this)
   }
 
   componentDidMount () {
@@ -25,7 +23,8 @@ class Dashboard extends Component {
     if (currentUser && currentUser.token) {
       data.setUserToken(currentUser.token)
       data.getQuizzes().then(quizzes => {
-        this.setState(state => ({
+        console.log("quizzes", quizzes)
+        this.setState(state => ({        
           pubQuizzes: quizzes.filter(quiz => quiz.published),
           unpubQuizzes: quizzes.filter(quiz => !quiz.published)
         }))
@@ -56,6 +55,12 @@ class Dashboard extends Component {
     )
   }
 
+  selectQuiz (quizId) {
+    this.setState({
+      selectedQuiz: quizId
+    })
+  }
+
   render () {
     const { currentUser } = this.props
     // console.log(this.state.unpubQuizzes)
@@ -73,11 +78,11 @@ class Dashboard extends Component {
           <h1 className='dashboard-title'>Quizzes</h1>
           <div className='quizzes-display'>
             {this.state.unpubQuizzes.length > 0 &&
-            <QuizListAdmin currentUser={currentUser} unpubQuizzes={this.state.unpubQuizzes} selectQuiz={this.selectQuiz} /> }
+            <QuizListAdmin currentUser={currentUser} unpubQuizzes={this.state.unpubQuizzes} selectQuiz={this.selectQuiz} selectedQuiz={this.state.selectedQuiz} /> }
             <div>
               {this.state.pubQuizzes.length > 0 &&
               this.state.pubQuizzes.map((quiz) =>
-                <QuizList currentUser={currentUser} key={quiz.quiz_id} pubQuizzes={this.state.pubQuizzes} id={quiz.quiz_id} selectQuiz={this.selectQuiz} />
+                <QuizList currentUser={currentUser} quiz={quiz} key={quiz.quiz_id} pubQuizzes={this.state.pubQuizzes} id={quiz.quiz_id} selectQuiz={this.selectQuiz} selectedQuiz={this.state.selectedQuiz} />
               ) }
             </div>
           </div>
